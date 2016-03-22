@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4BFF5751-0537-4813-AA71-5F7BA1441C4B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>zombie-zoo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>713DADB4B7631B9AEC987CBD2E9B1487F707AF03</key>
+		<string>ssh://darkzore.com/home/shan/zombie-zoo.git</string>
+		<key>8B34E8E323F5743C2CA37D5E9442FE6C62B4768B</key>
+		<string>https://github.com/tangyiyang/v3quick-classic</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>proj.ios/zombie-zoo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>713DADB4B7631B9AEC987CBD2E9B1487F707AF03</key>
+		<string>../../..</string>
+		<key>8B34E8E323F5743C2CA37D5E9442FE6C62B4768B</key>
+		<string>../../../../github/v3quick-classic</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://darkzore.com/home/shan/zombie-zoo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>713DADB4B7631B9AEC987CBD2E9B1487F707AF03</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8B34E8E323F5743C2CA37D5E9442FE6C62B4768B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>v3quick-classic</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>713DADB4B7631B9AEC987CBD2E9B1487F707AF03</string>
+			<key>IDESourceControlWCCName</key>
+			<string>zombie-zoo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

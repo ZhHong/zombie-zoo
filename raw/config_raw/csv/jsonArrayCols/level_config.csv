@@ -1,0 +1,8 @@
+id,name,map_id,skills,target_type,target_detail,target_desc,time_limit,star_condition,remark
+1,brick remover,1,-1,remove_brick,10,消除10个砖头,-1,-1,用来做非强制性新手引导
+2,monster remover,2,-1,2,9_0_0_0_0,消除9个1级怪,-1,-1,用来做非强制性新手引导
+3,monster slipper,3,-1,3,3,滑动monster3次,-1,-1,用来做非强制性新手引导
+4,comboooooo,4,-1,4,3,最大combo数达到3,-1,-1,用来做非强制性新手引导
+5,dragon's soar,5,-1,1,0_0_0_0_3,消除3个5级怪,-1,-1,用来做非强制性新手引导
+6,hit the mark 1,6,1,5,100,达到100分,-1,100_300_1000,100分1星，300分2星，1000分3星
+7,hit the mark 2,7,3,5,100,达到100分,-1,100_300_1000,100分1星，300分2星，1000分3星

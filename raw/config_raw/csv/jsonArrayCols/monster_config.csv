@@ -1,0 +1,26 @@
+id,name_cn,name_en,anim_name,thumb_name,type
+100,苔藓,moss,unit_pikeman,thumb_0,1
+101,湿润苔藓,wet moss,unit_pikeman,thumb_1,1
+102,胖苔藓,fat moss,unit_pikeman,thumb_2,1
+103,圆润苔藓,round fat moss,unit_pikeman,thumb_3,1
+104,滑嫩苔藓,smooth moss,unit_pikeman,thumb_4,1
+105,咬咬虫,bite cimex,unit_orc,thumb_5,2
+106,天蝎咬咬虫,scorp cimex,unit_orc,thumb_6,2
+107,胖胖天蝎咬咬虫,fat scorp cimex,unit_orc,thumb_7,2
+108,变异蜈蚣,transformed cimex,unit_orc,thumb_8,2
+109,粗大变异蜈蚣,strong cimex,unit_orc,thumb_9,2
+110,蜥蜴男,lizard boy,unit_shooter,thumb_10,3
+111,乌龟蜥蜴男,turtle lizard,unit_shooter,thumb_11,3
+112,装甲蜥蜴男,equiped lizard,unit_shooter,thumb_12,3
+113,胖胖蜥蜴男,fat lizard,unit_shooter,thumb_13,3
+114,白化胖胖蜥蜴男,white fat lizard,unit_shooter,thumb_14,3
+115,红胖纸,red fat,unit_kinght,thumb_15,4
+116,白化红胖纸,white red fat,unit_kinght,thumb_16,4
+117,高瘦红胖纸,tall red fat,unit_kinght,thumb_17,4
+118,绿胖纸,green fat,unit_kinght,thumb_18,4
+119,彩色胖纸,colorful fat,unit_kinght,thumb_19,4
+120,喷火龙,fire dragon,unit_nightmare,thumb_20,5
+121,精灵龙,sprite dragon,unit_nightmare,thumb_21,5
+122,魔法龙,magic dragon,unit_nightmare,thumb_22,5
+123,天使龙,angel dragon,unit_nightmare,thumb_23,5
+124,死亡之翼,death wing,unit_nightmare,thumb_24,5

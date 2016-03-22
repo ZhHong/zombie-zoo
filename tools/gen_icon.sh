@@ -1,0 +1,17 @@
+sips -Z 29 logo.png --out 29-1.png
+sips -Z 29 logo.png --out 29.png
+sips -Z 40 logo.png --out 40.png 
+sips -Z 50 logo.png --out 50.png 
+sips -Z 50 logo.png --out 50-1.png 
+sips -Z 57 logo.png --out 57.png 
+sips -Z 58 logo.png --out 58.png 
+sips -Z 58 logo.png --out 58-1.png 
+sips -Z 72 logo.png --out 72.png 
+sips -Z 76 logo.png --out 76.png 
+sips -Z 80 logo.png --out 80.png 
+sips -Z 100 logo.png --out 100.png 
+sips -Z 114 logo.png --out 114.png 
+sips -Z 120 logo.png --out 120.png 
+sips -Z 144 logo.png --out 144.png 
+sips -Z 152 logo.png --out 152.png 
+sips -Z 180 logo.png --out 180.png 

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "713DADB4B7631B9AEC987CBD2E9B1487F707AF03",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8B34E8E323F5743C2CA37D5E9442FE6C62B4768B" : 0,
+    "713DADB4B7631B9AEC987CBD2E9B1487F707AF03" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4BFF5751-0537-4813-AA71-5F7BA1441C4B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8B34E8E323F5743C2CA37D5E9442FE6C62B4768B" : "github\/v3quick-classic",
+    "713DADB4B7631B9AEC987CBD2E9B1487F707AF03" : "zombie-zoo"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "zombie-zoo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "proj.ios\/zombie-zoo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/darkzore.com\/home\/shan\/zombie-zoo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "713DADB4B7631B9AEC987CBD2E9B1487F707AF03"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tangyiyang\/v3quick-classic",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8B34E8E323F5743C2CA37D5E9442FE6C62B4768B"
+    }
+  ]
+}

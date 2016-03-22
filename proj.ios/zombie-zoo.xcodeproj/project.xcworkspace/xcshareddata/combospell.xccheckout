@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8B712EF2-5355-420F-8921-A5BB3315DFFD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>zombie-zoo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8B34E8E323F5743C2CA37D5E9442FE6C62B4768B</key>
+		<string>https://github.com/tangyiyang/v3quick-classic</string>
+		<key>EDEF6E6FDD7683CA3A26B807EF1DC20FA92DB168</key>
+		<string>ssh://code.comeplus.net:29418/zombie-zoo</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>proj.ios/zombie-zoo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8B34E8E323F5743C2CA37D5E9442FE6C62B4768B</key>
+		<string>../../../../github/v3quick-classic</string>
+		<key>EDEF6E6FDD7683CA3A26B807EF1DC20FA92DB168</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://code.comeplus.net:29418/zombie-zoo</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EDEF6E6FDD7683CA3A26B807EF1DC20FA92DB168</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EDEF6E6FDD7683CA3A26B807EF1DC20FA92DB168</string>
+			<key>IDESourceControlWCCName</key>
+			<string>zombie-zoo</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8B34E8E323F5743C2CA37D5E9442FE6C62B4768B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>v3quick-classic</string>
+		</dict>
+	</array>
+</dict>
+</plist>

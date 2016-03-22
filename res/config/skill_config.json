@@ -1,0 +1,11 @@
+{
+  "id":[1,2,3],
+  "name":["matrix_attack","matrix_attack","matrix_attack"],
+  "direction":["{0:0}{0:1}","{0:0}{1:0}","{0:0}{1:1}"],
+  "power":[2,2,3],
+  "cast_type":["step","step","step"],
+  "step":[5,5,7],
+  "time":[-1,-1,-1],
+  "target_type":[0,0,0],
+  "desc":["以(1,1)作为起点，每次在y轴的方向上将2个格子变砖头(target_type = 0)","以(1,1)作为起点，每次在x轴的方向上将2个格子变砖头(target_type = 0)","以(1,1)作为起点，45°角将3个格子变砖头"]
+}

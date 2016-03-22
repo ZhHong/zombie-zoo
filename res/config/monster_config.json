@@ -1,0 +1,8 @@
+{
+  "id":[100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124],
+  "name_cn":["苔藓","湿润苔藓","胖苔藓","圆润苔藓","滑嫩苔藓","咬咬虫","天蝎咬咬虫","胖胖天蝎咬咬虫","变异蜈蚣","粗大变异蜈蚣","蜥蜴男","乌龟蜥蜴男","装甲蜥蜴男","胖胖蜥蜴男","白化胖胖蜥蜴男","红胖纸","白化红胖纸","高瘦红胖纸","绿胖纸","彩色胖纸","喷火龙","精灵龙","魔法龙","天使龙","死亡之翼"],
+  "name_en":["moss","wet moss","fat moss","round fat moss","smooth moss","bite cimex","scorp cimex","fat scorp cimex","transformed cimex","strong cimex","lizard boy","turtle lizard","equiped lizard","fat lizard","white fat lizard","red fat","white red fat","tall red fat","green fat","colorful fat","fire dragon","sprite dragon","magic dragon","angel dragon","death wing"],
+  "anim_name":["unit_pikeman","unit_pikeman","unit_pikeman","unit_pikeman","unit_pikeman","unit_orc","unit_orc","unit_orc","unit_orc","unit_orc","unit_shooter","unit_shooter","unit_shooter","unit_shooter","unit_shooter","unit_kinght","unit_kinght","unit_kinght","unit_kinght","unit_kinght","unit_nightmare","unit_nightmare","unit_nightmare","unit_nightmare","unit_nightmare"],
+  "thumb_name":["thumb_0","thumb_1","thumb_2","thumb_3","thumb_4","thumb_5","thumb_6","thumb_7","thumb_8","thumb_9","thumb_10","thumb_11","thumb_12","thumb_13","thumb_14","thumb_15","thumb_16","thumb_17","thumb_18","thumb_19","thumb_20","thumb_21","thumb_22","thumb_23","thumb_24"],
+  "type":[1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5]
+}
