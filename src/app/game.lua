@@ -7,6 +7,7 @@ require("socket")
 
 require("app.statics.consts")
 
+print_r = require("app.statics.print_r")
 local game = class("game", cc.mvc.AppBase)
 
 function game:ctor()
