@@ -20,5 +20,5 @@ function map_bg_layer:ctor()
 		self:addChild(spr)
 	end
 end
-
+ 
 return map_bg_layer
