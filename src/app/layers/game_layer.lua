@@ -2,7 +2,6 @@ local game_layer = class("game_layer", function()
 		return display.newNode()
 	end)
 
-local ACTOR_CAEMRA_FLAG = 2
 function game_layer:ctor( )
 	local actor = display.newSprite("#ghost_1.png")
 	actor:setPosition(display.width/2, display.height/2)
@@ -23,7 +22,6 @@ function game_layer:ctor( )
     		local p = self:convertToWorldSpace(cc.p(x, y))
     		local tx, ty = p.x + self.camera:getPositionX(), p.y + self.camera:getPositionY()
 
-    		-- print(string.format("click = %.2f, %.2f, p = %.2f, %.2f, tx, ty = %.2f, %.2f",x, y, p.x, p.y, tx, ty))
     		actor:runAction(cc.MoveTo:create(0.5, cc.p(tx, ty)))
     	end
 
