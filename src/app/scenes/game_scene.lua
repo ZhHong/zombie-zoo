@@ -11,9 +11,6 @@ function game_scene:ctor()
 
 	preload()
 	
-	
-
-
 	local bg_layer = require("app.layers.map_bg_layer").new()
 
 	self:addChild(bg_layer, -1)
