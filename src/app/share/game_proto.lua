@@ -19,6 +19,15 @@ local c2s = [[
         }
     }
 
+    player_enter_room 2 {
+        request {
+            room_id 0 :integer
+        }
+        response {
+            err 0 :integer
+        }
+    }
+ 
 ]]
 
 local s2c = [[
