@@ -19,6 +19,7 @@ function login_handler:ctor(uuid)
 			},
 		callbacks = { 
 			on_login = handler(self, self.on_login),
+			on_fin = handler(self, self.on_fin),
 			on_logout = handler(self, self.on_logout),
 			on_resume = handler(self, self.on_resume),
 			on_abort = handler(self, self.on_abort),
@@ -29,7 +30,7 @@ function login_handler:ctor(uuid)
 
 	-- for k,v in pairs(self.stm.events) do
 	-- 	print("v.name = ", v.name)
-	-- 	local function_string = "return self.stm:" .. v.name .. "()"
+	-- 	local function_string = "do return function(self) print(\"call\") self.stm:" .. v.name .. "() end end"
 	-- 	print("function_string = ", function_string)
 	-- 	login_handler[v.name] = assert(loadstring(function_string))
 	-- 	print("typeo f login_handler[v.name] = ", type(login_handler[v.name]))
@@ -38,6 +39,10 @@ end
 
 function login_handler:login()
 	self.stm:login()
+end
+
+function login_handler:fin()
+	self.stm:fin()
 end
 
 function login_handler:logout()
@@ -58,6 +63,13 @@ function login_handler:on_login()
 			if event == "CONNECT" then
 				if msg.ok then
 					print("connected.")
+
+					GAME:register_client(self.client)
+
+					self.client:call_remote("player_login", {}, function(msg)
+							print_r(msg)
+							
+						end)
 				else
 					print("connected error msg = ", msg.err)
 				end

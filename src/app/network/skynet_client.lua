@@ -1,5 +1,6 @@
 local socket = require "socket"
 local timer = "app.network.timer"
+require "pack"
 
 local skynet_client = {}
 
@@ -132,6 +133,7 @@ function skynet_client:raw_request(name, args)
     local function pack_msg()
         if _VERSION ~= 'Lua 5.3' then
             local len = string.len(str)
+            print_r(string)
             local leninfo = string.pack("bb", math.floor(len/256), len%256)
             return string.pack("A", leninfo .. str)
         else

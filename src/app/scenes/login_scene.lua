@@ -22,7 +22,6 @@ function login_scene:ctor()
 		if not handler then
 			handler = login_handler.new(uuid)
 		end
-		print_r(handler)
 		handler:login()
 	end
 

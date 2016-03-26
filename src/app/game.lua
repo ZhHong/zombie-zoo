@@ -53,6 +53,13 @@ function game:stop()
     self.timer_mananger.destory()
 end
 
+function game:register_client(client)
+    self.client = client
+end
+
+function game:call_remote(...)
+    self.client:call_remote(...)
+end
 
 return game
 

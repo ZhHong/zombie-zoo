@@ -10,12 +10,12 @@ local types = [[
 ]]
 
 local c2s = [[
-    login 1 {
+    player_login 1 {
         request {
             uuid  0 : string
         }
         response {
-            error 0 : integer   # see the error code description
+            err 0 : integer
         }
     }
 
