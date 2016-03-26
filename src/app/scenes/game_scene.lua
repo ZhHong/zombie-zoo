@@ -17,7 +17,6 @@ function game_scene:ctor()
 	local game_layer = require("app.layers.game_layer").new()
 	self:addChild(game_layer)
 
-	-- bg_layer:runAction(cc.Follow:create(game_layer:get_camera()))
 	bg_layer:setCameraMask(2)
 	game_layer:setCameraMask(2)
 

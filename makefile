@@ -1,4 +1,4 @@
-.PHONY:all ccb cfg android ios create_extra_folders
+.PHONY:all ccb cfg android ios create_extra_folders proto
 
 ccb:fonts
 	mkdir -p res/ccb
@@ -23,6 +23,11 @@ tmx:
 	make -C raw tmx
 	mkdir -p res/tmx
 	cp ${ZOMBIE_ZOO_CLIENT_ROOT}/tmp/res_ios/tmx/* ${ZOMBIE_ZOO_CLIENT_ROOT}/res/tmx
+proto:
+	mkdir -p src/app/share
+	-rm -rf ./src/app/share/*.lua
+	ln ${ZOMBIE_ZOO_SERVER_ROOT}/share/game_proto.lua ./src/app/share/game_proto.lua
+
 all:android 
 	
 android:clean create_extra_folders 

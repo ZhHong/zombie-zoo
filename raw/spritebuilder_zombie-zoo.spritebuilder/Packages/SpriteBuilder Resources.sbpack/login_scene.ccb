@@ -457,7 +457,7 @@
 				<key>displayName</key>
 				<string>CCButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>btn_1p</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -939,7 +939,7 @@
 				<key>displayName</key>
 				<string>CCButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>btn_2p</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -959,7 +959,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>520.09344482421875</real>
+							<real>522.581787109375</real>
 							<real>137.52056884765625</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1270,6 +1270,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

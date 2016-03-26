@@ -5,10 +5,9 @@ local skynet_client = {}
 
 local full_log = false
 
-function skynet_client:new(...)
+function skynet_client.new(...)
     local o = {}
-    setmetatable(o, self)
-    self.__index = self
+    setmetatable(o, {__index = skynet_client})
 
     o:ctor(...)
 
@@ -24,8 +23,8 @@ function skynet_client:ctor(proto, name)
     self.client = socket.tcp()
 
     -- init the rpc client & host
-    local sproto = require("sproto")
-    local parser = require("sprotoparser")
+    local sproto = require("app.network.sproto")
+    local parser = require("app.network.sprotoparser")
 
     local s2c = parser.parse(proto.s2c)
     local c2s = parser.parse(proto.c2s)

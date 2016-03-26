@@ -21,6 +21,7 @@ end
 function timer_mananger.new_timer(...)
 	local t = timer.new(...)
 	timers[t] = t
+	return t
 end
 
 function timer_mananger.stop(t)

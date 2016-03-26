@@ -40,9 +40,8 @@ end
 
 function timer:update(dt)
 	local now = self.now + dt
-	if now >= interval then
-		if loop > 0 then
-			loop = loop - 1
+	if now >= self.interval then
+		if self.loop then
 			self.now = 0
 		else
 			self.stopped = true
