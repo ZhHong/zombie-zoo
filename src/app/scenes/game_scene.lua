@@ -12,13 +12,13 @@ function game_scene:ctor()
 	
 	local bg_layer = require("app.layers.map_bg_layer").new()
 
-	self:addChild(bg_layer, -1)
+	self:addChild(bg_layer)
 
 	local game_layer = require("app.layers.game_layer").new()
 	self:addChild(game_layer)
 
-	bg_layer:setCameraMask(2)
-	game_layer:setCameraMask(2)
+	bg_layer:setCameraMask(ACTOR_CAEMRA_FLAG)
+	game_layer:setCameraMask(ACTOR_CAEMRA_FLAG)
 
 	self:setNodeEventEnabled(true)
 	self:addNodeEventListener(cc.NODE_ENTER_FRAME_EVENT, handler(self, self.update))
