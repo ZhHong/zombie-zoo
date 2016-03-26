@@ -72,19 +72,21 @@ end
 local function keyFrameCreate(jsondata, createFunc, ...)
     local keyframes = jsondata.keyframes
     local actions = {}
-    if keyframes[1].time > 0 then
-        actions[#actions+1] = cc.DelayTime:create(keyframes[1].time)
-    end
+    -- if keyframes[1].time > 0 then
+        -- actions[#actions+1] = cc.DelayTime:create(keyframes[1].time)
+    -- end
 
+    print("#keyframes-1 = ", #keyframes-1)
     for i = 1, #keyframes-1 do
         local f1 = keyframes[i]
         local f2 = keyframes[i+1]
 
         local action = createFunc(f1, f2, i)
 
-        local ease = createEaseWithType(f1.easing.type, f1.easing.opt, action)
-        actions[#actions+1] = ease
+        -- local ease = createEaseWithType(f1.easing.type, f1.easing.opt, action)
+        actions[#actions+1] = action
     end
+    print("#actions = ", #actions)
     return cc.Sequence:create(actions)
 end
 
@@ -134,7 +136,8 @@ end
 local function keyFrame_opacity_action_create(jsondata)
     local function opacity(f1, f2)
         local duration = f2.time - f1.time
-        local to = f2.value - f1.value
+        -- spritebuilder use normalized number while cocos2d use (0-255)
+        local to = tonumber(f2.value*255)
         return cc.FadeTo:create(duration, to)
     end
     return keyFrameCreate(jsondata, opacity)

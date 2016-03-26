@@ -8,6 +8,7 @@ android:common
 	make -C unpack
 	make -C demo
 	make -C actor
+	make -C fonts
 
 ios:common
 	make -C effects android
@@ -38,7 +39,7 @@ common:
 	mkdir -p $(tmpdir)/res_android/unpack
 	mkdir -p $(tmpdir)/res_ios/unpack
 	cp ./unpack/*.png $(tmpdir)/res_android/unpack
-	# cp ./unpack/*.jpg $(tmpdir)/res_android/unpack
+	cp ./unpack/*.jpg $(tmpdir)/res_android/unpack
 	cp ./unpack/*.png $(tmpdir)/res_ios/unpack
-	# cp ./unpack/*.jpg $(tmpdir)/res_android/unpack
+	cp ./unpack/*.jpg $(tmpdir)/res_android/unpack
 

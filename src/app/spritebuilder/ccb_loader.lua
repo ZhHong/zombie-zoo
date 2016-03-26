@@ -42,11 +42,12 @@ local function setNodeProps(node, options)
         rotation = options.rotation
     end
 
-    local visible = true and options.visible
-
+    local visible = options.visible == nil and true
+    
     node:setScaleX(scaleX)
     node:setScaleY(scaleY)
     node:setRotation(rotation)
+    node:setVisible(visible)
 
     local ignoreAnchor = options.ignoreAnchorPointForPosition or false
     node:setPosition(x, y)
@@ -531,7 +532,7 @@ local function parseSequenceProps(seqs, callbacks)
     return ret
 end
 
-local function getSeqWithId(seq, id)
+local function get_seq(seq, id)
     for k,v in pairs(seq) do
         if tonumber(v.sequenceId) == tonumber(id) then
             return v
@@ -568,7 +569,7 @@ local function createNodeWithBaseClassName(rootdata, father, childrenList, seq)
     local animatedProperties = rootdata["animatedProperties"]
     if animatedProperties then
         for id, animatedProperty in pairs(animatedProperties) do
-            local s = getSeqWithId(seq, id)
+            local s = get_seq(seq, id)
             s:addAnimForNode(node, animatedProperty)
         end
     end
@@ -625,7 +626,7 @@ function CCBLoader.load(jsonFileName, callbacks, root)
     return ccbNode, childrenList, seq
 end
 
-function CCBLoader.playSeq(node, allseq, s)
+function CCBLoader.play_seq(node, allseq, s)
     local callfuncs, sounds, finish = s:getSeq()
 
     for i = 1, #callfuncs do
@@ -636,22 +637,23 @@ function CCBLoader.playSeq(node, allseq, s)
         node:runAction(sounds[i])
     end
     -- play recursively
-    local function playNextSeq(runningNode, allseq, seq)
+    local function play_next_seq(runningNode, allseq, seq)
         local nextid = seq.chainedSequenceId
+        print("loop, nextid = ", nextid)
         if tonumber(nextid) == -1 then
             return
         end
-        local nextSeq = getSeqWithId(allseq, nextid)
-        CCBLoader.playSeq(runningNode, allseq, nextSeq)
+        local nextSeq = get_seq(allseq, nextid)
+        CCBLoader.play_seq(runningNode, allseq, nextSeq)
     end
-    local next = delayCall(s.length, playNextSeq, node, allseq, s) 
+    local next = delayCall(s.length, play_next_seq, node, allseq, s) 
     node:runAction(next)
 
 end
 
-function CCBLoader.playTimeline(node, allseq, name)
+function CCBLoader.play_timeline(node, allseq, name)
     local nm = name or "Default Timeline"
-    CCBLoader.playSeq(node, allseq, allseq[nm])
+    CCBLoader.play_seq(node, allseq, allseq[nm])
 end
 
 return CCBLoader

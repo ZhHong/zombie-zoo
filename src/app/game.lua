@@ -24,14 +24,19 @@ local function initModules(self)
     local ccb = require("app.spritebuilder.ccb")
     ccb.init({ language = device.language, 
                 defaultBMFontPath = defaultBMFontName(), 
-                fonts_root_path = "fonts/", 
+                fonts_root_path = "", 
                 translation_file = "fonts/Strings.json", })
     self.ccb = ccb
+
+    local timer_mananger = require("app.network.timer_mananger")
+    timer_mananger.init()
+
+    self.timer_mananger = timer_mananger
 end
 
 function game:run()
     
-    game = self
+    GAME = self
 
     math.newrandomseed(socket.gettime())
     cc.FileUtils:getInstance():addSearchPath("res/")
@@ -39,7 +44,11 @@ function game:run()
     
     initModules(self)
 
-    self:enterScene("game_scene")
+    self:enterScene("login_scene")
+end
+
+function game:stop()
+    self.timer_mananger.destory()
 end
 
 

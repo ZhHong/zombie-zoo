@@ -15,8 +15,12 @@ function CCB.init( config )
 	loader.init(cfg)
 end
 
-function CCB.load(jsonFileName, callbacks, root)
-	return loader.load(jsonFileName, callbacks, root)
+function CCB.load(...)
+	return loader.load(...)
+end
+
+function CCB.play(...)
+	return loader.play_timeline(...)
 end
 
 return CCB
