@@ -25,7 +25,9 @@ local function initModules(self)
     ccb.init({ language = device.language, 
                 defaultBMFontPath = defaultBMFontName(), 
                 fonts_root_path = "", 
-                translation_file = "fonts/Strings.json", })
+                translation_file = "fonts/Strings.json",
+                controlButtonUseBMFont = true
+                 })
     self.ccb = ccb
 
     local timer_mananger = require("app.network.timer_mananger")

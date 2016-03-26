@@ -18,7 +18,7 @@ function game_scene:ctor()
 	self:addChild(game_layer)
 
 	-- bg_layer:runAction(cc.Follow:create(game_layer:get_camera()))
-		bg_layer:setCameraMask(2)
+	bg_layer:setCameraMask(2)
 	game_layer:setCameraMask(2)
 
 	self:setNodeEventEnabled(true)

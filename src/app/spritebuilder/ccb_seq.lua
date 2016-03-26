@@ -76,7 +76,6 @@ local function keyFrameCreate(jsondata, createFunc, ...)
         -- actions[#actions+1] = cc.DelayTime:create(keyframes[1].time)
     -- end
 
-    print("#keyframes-1 = ", #keyframes-1)
     for i = 1, #keyframes-1 do
         local f1 = keyframes[i]
         local f2 = keyframes[i+1]
@@ -86,7 +85,6 @@ local function keyFrameCreate(jsondata, createFunc, ...)
         -- local ease = createEaseWithType(f1.easing.type, f1.easing.opt, action)
         actions[#actions+1] = action
     end
-    print("#actions = ", #actions)
     return cc.Sequence:create(actions)
 end
 
@@ -166,7 +164,6 @@ local anim_createFuncs = {
 local function keyFrame_anim_createFunc(animatedProperty)
     local ret = {}
     for actionName, keyframes in pairs(animatedProperty) do
-        print("actioname = ", actionName)
         local action = anim_createFuncs[actionName](keyframes)
         if action then
             ret[#ret+1] = action

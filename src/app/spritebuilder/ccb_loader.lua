@@ -83,11 +83,11 @@ local function setSpriteProps(spr, options)
 end
 
 local function setScale9SpriteProps(spr, options)
-    local cache = cc.SpriteFrameCache:getInstance()
-    local frame = cache:getSpriteFrame(options.spriteFrame.spriteFrameName)
-    spr:setSpriteFrame(frame)
     spr:setPreferredSize(options.contentSize)
     spr:setColor(options.color)
+    if options.opacity then
+        spr:setOpacity(options.opacity)
+    end
 end
 
 local function setLabelBMFontProps(label, options)
@@ -121,9 +121,15 @@ local function spriteCreateFunc(options)
 end
 
 local function scale9SpriteCreateFunc(options)
-    local spr = display.newScale9Sprite()
+    local name = options.spriteFrame.spriteFrameName
+    if options.spriteFrame.plist ~= "" then
+        name = "#" .. name
+    end
+
+    local spr = display.newScale9Sprite(name)
     setNodeProps(spr, options)
     setScale9SpriteProps(spr, options)
+
     return spr
 end
 
@@ -565,7 +571,6 @@ local function createNodeWithBaseClassName(rootdata, father, childrenList, seq)
     end
     setNodeBaseValue(node, baseClassName, options)
 
-    print("visit ", rootdata.displayName)
     local animatedProperties = rootdata["animatedProperties"]
     if animatedProperties then
         for id, animatedProperty in pairs(animatedProperties) do
@@ -639,7 +644,6 @@ function CCBLoader.play_seq(node, allseq, s)
     -- play recursively
     local function play_next_seq(runningNode, allseq, seq)
         local nextid = seq.chainedSequenceId
-        print("loop, nextid = ", nextid)
         if tonumber(nextid) == -1 then
             return
         end
@@ -657,5 +661,3 @@ function CCBLoader.play_timeline(node, allseq, name)
 end
 
 return CCBLoader
-
-

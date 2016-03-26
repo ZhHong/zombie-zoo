@@ -9,7 +9,6 @@ function CCB.init( config )
 	local translation = CCBString.new(config.translation_file, language)
 
 	local cfg = config
-	config.controlButtonUseBMFont = false
 	config.translation = translation
 
 	loader.init(cfg)
