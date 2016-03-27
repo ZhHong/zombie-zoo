@@ -4,6 +4,7 @@ local game_handler = class("game_handler")
 
 function game_handler:ctor()
 	GAME.client:register_listener("player_room_action", handler(self, self.on_player_room_action))
+	GAME.client:register_listener("player_state_action", handler(self, self.on_player_state_action))
 end
 
 function game_handler:on_player_room_action(msg)
@@ -24,6 +25,12 @@ function game_handler:on_player_room_action(msg)
 	else
 		assert(false, "invalid action.")
 	end
+end
+
+function game_handler:on_player_state_action(msg)
+	print("game_handler:on_player_state_action")
+	print_r(msg)
+	self.ui:update_actor(msg)
 end
 
 function game_handler:set_ui(ui)

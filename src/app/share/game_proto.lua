@@ -26,6 +26,14 @@ local types = [[
     pos  2 : coord
 }
 
+# TODO: we can't use string here, we should use index to indentify each player
+
+.player_state_sync_data {
+    uuid        0 : string
+    action_type 1 : integer
+    coord       2 : coord
+}
+
 ]]
 
 local c2s = [[
@@ -58,6 +66,13 @@ local c2s = [[
             player_info 1 : *player_info(uuid)
         }
     }
+
+    player_upload_state 102 {
+        request {
+            sync_data 0 : player_state_sync_data
+        }
+        response {}
+    }
  
 ]]
 
@@ -68,10 +83,17 @@ local s2c = [[
             room_id     1 : integer
             player_info 2 : player_info  # TODO:add an actor once, we need more????
         }
-        response {
-
-        }
+        response {}
     }
+
+    player_state_action 2 {
+        request {
+            sync_data 0 : player_state_sync_data
+            player_info 1 : player_info #TODO: fix here, only pass the id
+        }
+        response {}
+    }
+
 ]]
 
 proto.c2s = types .. c2s

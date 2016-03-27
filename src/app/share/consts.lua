@@ -10,6 +10,12 @@ local consts = {
 		player_enter = 1,
 		player_leave = 2,
 	},
+
+	player_state_action = {
+		move = 1,
+		cast = 2,
+		die = 3,
+	}
 }
 
 

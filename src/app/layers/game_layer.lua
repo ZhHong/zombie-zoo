@@ -1,3 +1,5 @@
+local consts = require "app.share.consts"
+
 local game_layer = class("game_layer", function(...)
 		return display.newNode(...)
 	end)
@@ -48,6 +50,14 @@ function game_layer:ctor(players, handler)
     		local p = self:convertToWorldSpace(cc.p(x, y))
     		local tx, ty = p.x + self.camera:getPositionX(), p.y + self.camera:getPositionY()
 
+    		print("tx , ty = ", tx, ty)
+    		--TODO: remember to check the coord, the position sync may go wrong.????
+    		GAME.client:call_remote("player_upload_state", {
+	    			sync_data = {
+	    				action_type = consts.player_state_action.move,
+	    				coord = { x = math.floor(tx), y = math.floor(ty) }
+	    			}
+    			}, function() end)
     		self.player_actor:runAction(cc.MoveTo:create(0.5, cc.p(tx, ty)))
     	end
 
@@ -66,6 +76,23 @@ function game_layer:remove_actor(player)
 	print('game_layer:remove_actor player_uuid = ', player.uuid)
 	self.actors[player.uuid]:removeFromParent()
 	self.actors[player.uuid] = nil
+end
+
+function game_layer:update_actor(msg)
+	print('update_actor')
+	print_r(msg)
+	local data = msg.sync_data
+	if data.action_type == consts.player_state_action.move then
+		local actor = self.actors[msg.player_info.uuid]
+		-- TODO: here we should use ccmoveto..
+		actor:setPosition(data.coord.x, data.coord.y)
+	elseif data.action_type == consts.player_state_action.cast then
+		
+	elseif data.action_type == consts.player_state_action.die then
+
+	else
+		assert(false, "game_layer:update actor invalid action_type")
+	end
 end
 
 function game_layer:get_camera()
