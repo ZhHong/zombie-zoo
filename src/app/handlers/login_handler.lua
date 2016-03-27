@@ -68,6 +68,7 @@ local function on_login_finished(self, msg)
 
 		GAME.client:call_remote("player_get_room_list", {server_id = 0}, function(msg)
 			msgbox:remove()
+			print_r(msg)
 			if msg.err == 0 then
 				GAME:enterScene("room_select_scene", {msg.rooms})
 			else
@@ -75,7 +76,6 @@ local function on_login_finished(self, msg)
 				assert(false, "get room error")
 			end
 		end)
-
 	else
 
 	end

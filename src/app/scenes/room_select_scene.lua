@@ -9,19 +9,35 @@ local function preload()
 end
 
 function room_select_scene:ctor(rooms)
-	print_r(rooms)
 	preload()
 
-	local node, children, seq = GAME.ccb.load("ccb/room_select_scene.json")
+	local node, scene_children, seq = GAME.ccb.load("ccb/room_select_scene.json")
 	self:addChild(node)
 
-	print_r(children)
+	local function enter_room(room_id)
+		GAME.client:call_remote("player_enter_room", {room_id = room_id}, function(msg)
+				print_r(msg)
+				if msg.err == 0 then
+
+				else
+					
+					-- TODO: process the error.
+					assert(false, "not process error yet.")
+				end
+			end)
+	end
+
 	local function set_list()
-		local listView = children.room_list
+		local listView = scene_children.room_list
 		local cell = "ccb/" .. listView.options.cell .. ".json"
 		for i = 1, #rooms do
 	        local item = listView:newItem()
-	        local content = GAME.ccb.load(cell)
+	        local content, cell_children = GAME.ccb.load(cell)
+	        utils.set_ctrl_btn(cell_children.cell_btn, function()
+	        		print("click i", i)
+	        		print_r(rooms[i])
+	        		enter_room(rooms[i].id)
+	        	end)
 	        item:addContent(content)
 	        item:setItemSize(content:getContentSize().width, content:getContentSize().height + 10)
 	        listView:addItem(item)

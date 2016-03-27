@@ -15,6 +15,17 @@ local types = [[
     name   4 : string
 }
 
+.coord {
+    x 0 :integer
+    y 1 :integer    
+}
+
+.player_info {
+    uuid 0 : string
+    name 1 : string
+    pos  2 : coord
+}
+
 ]]
 
 local c2s = [[
@@ -39,10 +50,11 @@ local c2s = [[
 
     player_enter_room 101 {
         request {
-            room_id 0 :integer
+            room_id 0 : integer
         }
         response {
-            err 0 :integer
+            err 0 : integer
+            player_info 1 : *player_info
         }
     }
  
