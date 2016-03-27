@@ -35,6 +35,7 @@ local c2s = [[
         }
         response {
             err 0 : integer
+            player_info 1 : player_info
         }
     }
 
@@ -54,14 +55,22 @@ local c2s = [[
         }
         response {
             err 0 : integer
-            player_info 1 : *player_info
+            player_info 1 : *player_info(uuid)
         }
     }
  
 ]]
 
 local s2c = [[
-   
+    player_leave_room 1 {
+        request {
+            room_id 0 : integer
+            player_uuid 1 :   string
+        }
+        response {
+
+        }
+    }
 ]]
 
 proto.c2s = types .. c2s

@@ -7,7 +7,10 @@ require("socket")
 
 require("app.statics.consts")
 
+-- export some global tool no side effect methods
 print_r = require("app.statics.print_r")
+require("app.statics.tools").exports()
+
 local game = class("game", cc.mvc.AppBase)
 
 function game:ctor()
@@ -51,6 +54,14 @@ end
 
 function game:stop()
     self.timer_mananger.destory()
+end
+
+function game:set_player(p)
+    self.player = p
+end
+
+function game:get_player()
+    return self.player
 end
 
 function game:register_client(client)

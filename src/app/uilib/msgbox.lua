@@ -12,7 +12,6 @@ local function contains(node, x, y)
     return cc.rectContainsPoint(rect, p)
 end
 
-
 local ZORDER_BG = 0
 function msgbox:ctor(op)
     local options

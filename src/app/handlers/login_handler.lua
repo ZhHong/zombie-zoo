@@ -59,6 +59,11 @@ end
 
 local function on_login_finished(self, msg)
 	if msg.err == 0 then
+		print('--the masg ig')
+		print_r(msg)
+		local player = require "app.models.player"
+		GAME:set_player(player.new(msg.player_info))
+
 		local msgbox = require("app.uilib.msgbox").new {
 			title = "Searching Room",
 			content = "Searching\n, ..... Please Waiting ..... ",
@@ -68,7 +73,6 @@ local function on_login_finished(self, msg)
 
 		GAME.client:call_remote("player_get_room_list", {server_id = 0}, function(msg)
 			msgbox:remove()
-			print_r(msg)
 			if msg.err == 0 then
 				GAME:enterScene("room_select_scene", {msg.rooms})
 			else

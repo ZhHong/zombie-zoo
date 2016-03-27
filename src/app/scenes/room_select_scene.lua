@@ -16,11 +16,13 @@ function room_select_scene:ctor(rooms)
 
 	local function enter_room(room_id)
 		GAME.client:call_remote("player_enter_room", {room_id = room_id}, function(msg)
-				print_r(msg)
 				if msg.err == 0 then
+					print("entered the room.")
+					-- local scene = require("app.scenes.game_scene").new(msg.player_info)
+					-- display.replaceScene(scene)
 
+					GAME:enterScene("game_scene", {msg.player_info})
 				else
-					
 					-- TODO: process the error.
 					assert(false, "not process error yet.")
 				end

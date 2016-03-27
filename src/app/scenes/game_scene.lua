@@ -1,8 +1,8 @@
-local game_scene = class("game_scene", function()
-		return display.newScene()
+local game_scene = class("game_scene", function(...)
+		return display.newScene(...)
 	end)
 
-function game_scene:ctor()
+function game_scene:ctor(players)
 	local function preload()
 		cc.SpriteFrameCache:getInstance():addSpriteFrames("images/ui.plist")
 		cc.SpriteFrameCache:getInstance():addSpriteFrames("images/ghost.plist")
@@ -14,7 +14,7 @@ function game_scene:ctor()
 
 	self:addChild(bg_layer)
 
-	local game_layer = require("app.layers.game_layer").new()
+	local game_layer = require("app.layers.game_layer").new(players)
 	self:addChild(game_layer)
 
 	bg_layer:setCameraMask(ACTOR_CAEMRA_FLAG)

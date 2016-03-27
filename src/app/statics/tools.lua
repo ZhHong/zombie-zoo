@@ -120,4 +120,9 @@ function tools.shuffle(total, max)
     return results
 end
 
+function tools.exports()
+    deepcopy = tools.deepcopy
+    tnums = tools.tnums
+end
+
 return tools
