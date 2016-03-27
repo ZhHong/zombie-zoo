@@ -27,7 +27,8 @@ proto:
 	mkdir -p src/app/share
 	-rm -rf ./src/app/share/*.lua
 	ln ${ZOMBIE_ZOO_SERVER_ROOT}/share/game_proto.lua ./src/app/share/game_proto.lua
-
+	ln ${ZOMBIE_ZOO_SERVER_ROOT}/share/consts.lua ./src/app/share/consts.lua
+	ln ${ZOMBIE_ZOO_SERVER_ROOT}/share/error_code.lua ./src/app/share/error_code.lua
 all:android 
 	
 android:clean create_extra_folders 

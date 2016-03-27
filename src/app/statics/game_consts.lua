@@ -23,6 +23,5 @@ function defaultTTFFontName()
     return ttffonts[device.language] or ""
 end
 
-
 -- game constants
 ACTOR_CAEMRA_FLAG = 2

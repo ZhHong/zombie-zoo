@@ -62,10 +62,11 @@ local c2s = [[
 ]]
 
 local s2c = [[
-    player_leave_room 1 {
+    player_room_action 1 {
         request {
-            room_id 0 : integer
-            player_uuid 1 :   string
+            action_type 0 : integer  #check consts.player_room_action
+            room_id     1 : integer
+            player_info 2 : player_info  # TODO:add an actor once, we need more????
         }
         response {
 

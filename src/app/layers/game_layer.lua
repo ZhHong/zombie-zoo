@@ -1,30 +1,38 @@
-local game_layer = class("game_layer", function()
-		return display.newNode()
+local game_layer = class("game_layer", function(...)
+		return display.newNode(...)
 	end)
 
 local function tile_to_screen(x, y)
 	return display.width/2 + x * display.width, display.height/2 + y*display.height
 end
 
-function game_layer:ctor(players)
+local function add_actor_from_player(self, player)
+	local actor = display.newSprite("#ghost_1.png")
+	local x, y = tile_to_screen(player.pos.x, player.pos.y)
+	actor:setPosition(x, y)
+	print("x, y = ", x, y)
+	self:addChild(actor)
+	actor:setCameraMask(ACTOR_CAEMRA_FLAG)
+	self.actors[player.uuid] = actor
+	actor.player = player
+	return actor
+end
+
+function game_layer:ctor(players, handler)
 	-- init the actors
-	local actors = {}
+	handler:set_ui(self)
+	self.handler = handler
+	self.actors = {}
 	local cur_id = GAME:get_player():get_uuid()
 
 	for i, player in pairs(players) do
-		local actor = display.newSprite("#ghost_1.png")
-		local x, y = tile_to_screen(player.pos.x, player.pos.y)
-		actor:setPosition(x, y)
-		self:addChild(actor)
-		actors[#actors+1] = actor
+		local actor = add_actor_from_player(self, player)
 		print("cur_id, player.uuid = ", cur_id, player.uuid)
 		if cur_id == player.uuid then
-			print('---- enter here??')
 			self.player_actor = actor
 		end
-		actor:setCameraMask(ACTOR_CAEMRA_FLAG)
+		
 	end
-	self.actors = actors
 
 	local camera = cc.Camera:createOrthographic(display.width, display.height, 0, 1)
 	camera:setCameraFlag(ACTOR_CAEMRA_FLAG)
@@ -47,16 +55,17 @@ function game_layer:ctor(players)
     end)
 
     self:setContentSize(display.width*2, display.height*2)
-
-  
 end
 
 function game_layer:add_actor(player)
-
+	print('game_layer:add_actor player_uuid = ', player.uuid)
+	add_actor_from_player(self, player)
 end
 
 function game_layer:remove_actor(player)
-
+	print('game_layer:remove_actor player_uuid = ', player.uuid)
+	actors[player.uuid]:removeFromParent()
+	actors[player.uuid] = nil
 end
 
 function game_layer:get_camera()

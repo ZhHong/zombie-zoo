@@ -5,7 +5,7 @@ require("framework.cc.init")
 
 require("socket")
 
-require("app.statics.consts")
+require("app.statics.game_consts")
 
 -- export some global tool no side effect methods
 print_r = require("app.statics.print_r")
