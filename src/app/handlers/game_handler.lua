@@ -17,7 +17,7 @@ function game_handler:on_player_room_action(msg)
 			print("add the actor, new player goes here")
 			self.ui:add_actor(msg.player_info)
 		end
-	elseif msg.actors == consts.player_room_action.player_leave then
+	elseif msg.action_type == consts.player_room_action.player_leave then
 		if self.ui then
 			self.ui:remove_actor(msg.player_info)
 		end

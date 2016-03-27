@@ -64,8 +64,8 @@ end
 
 function game_layer:remove_actor(player)
 	print('game_layer:remove_actor player_uuid = ', player.uuid)
-	actors[player.uuid]:removeFromParent()
-	actors[player.uuid] = nil
+	self.actors[player.uuid]:removeFromParent()
+	self.actors[player.uuid] = nil
 end
 
 function game_layer:get_camera()
