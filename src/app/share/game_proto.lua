@@ -7,6 +7,14 @@ local types = [[
     session     1 : integer
 }
 
+.room_info {
+    id     0 : integer
+    status 1 : integer  # 0-open, 1-closed, 2-locked
+    cur    2 : integer
+    limit  3 : integer
+    name   4 : string
+}
+
 ]]
 
 local c2s = [[
@@ -19,7 +27,17 @@ local c2s = [[
         }
     }
 
-    player_enter_room 2 {
+    player_get_room_list 100 {
+        request {
+            server_id 0 : integer
+        }
+        response {
+            err     0 : integer
+            rooms   1 : *room_info
+        }
+    }
+
+    player_enter_room 101 {
         request {
             room_id 0 :integer
         }

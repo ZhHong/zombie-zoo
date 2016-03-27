@@ -57,6 +57,30 @@ function login_handler:abort()
 	self.stm:abort()
 end
 
+local function on_login_finished(self, msg)
+	if msg.err == 0 then
+		local msgbox = require("app.uilib.msgbox").new {
+			title = "Searching Room",
+			content = "Searching\n, ..... Please Waiting ..... ",
+			ensure_btn_enable = false,
+		}
+		msgbox:display()
+
+		GAME.client:call_remote("player_get_room_list", {server_id = 0}, function(msg)
+			msgbox:remove()
+			if msg.err == 0 then
+				GAME:enterScene("room_select_scene", {msg.rooms})
+			else
+				--TODO: deal error here.
+				assert(false, "get room error")
+			end
+		end)
+
+	else
+
+	end
+end
+
 function login_handler:on_login()
 	print("on_login")
 	self.client:connect("127.0.0.1", 2000, function(event, msg)
@@ -66,9 +90,8 @@ function login_handler:on_login()
 
 					GAME:register_client(self.client)
 
-					self.client:call_remote("player_login", {}, function(msg)
-							print_r(msg)
-							
+					self.client:call_remote("player_login", {uuid = self.uuid}, function(msg)
+							on_login_finished(self, msg)
 						end)
 				else
 					print("connected error msg = ", msg.err)

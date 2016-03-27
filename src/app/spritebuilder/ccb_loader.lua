@@ -122,9 +122,6 @@ end
 
 local function scale9SpriteCreateFunc(options)
     local name = options.spriteFrame.spriteFrameName
-    if options.spriteFrame.plist ~= "" then
-        name = "#" .. name
-    end
 
     local spr = display.newScale9Sprite(name)
     setNodeProps(spr, options)
@@ -165,7 +162,7 @@ local function controllButtonCreateFunc(options)
     local zoomWhenHighlighted = options.zoomWhenHighlighted
     local btnSize = options.preferredSize
 
-    local norSprite = display.newScale9Sprite("#"..norFile)
+    local norSprite = display.newScale9Sprite(norFile)
     norSprite:setPreferredSize(btnSize)
     local ret =  cc.ControlButton:create(title, norSprite)
     ret:setZoomOnTouchDown(zoomWhenHighlighted)
@@ -230,12 +227,7 @@ end
 
 local function textFieldCreateFunc(options)
     local image
-    print_r(options)
-    if options.backgroundSpriteFrame.plist ~= "" then
-        image = "#" .. options.backgroundSpriteFrame.spriteFrameName
-    else
-        image = options.backgroundSpriteFrame.spriteFrameName
-    end
+    image = options.backgroundSpriteFrame.spriteFrameName
 
     local textFiled = cc.ui.UIInput.new {
         image = image,
@@ -260,9 +252,11 @@ local function progressTimerCreateFunc(options)
 end
 
 local function ListViewCreateFunc(options)
-    local spriteFrameName = "#" .. options.spriteFrame.spriteFrameName
-    local w = options.preferredSize.width
-    local h = options.preferredSize.height
+    local spriteFrameName
+    spriteFrameName = options.spriteFrame.spriteFrameName
+
+    local w = options.contentSize.width or options.width
+    local h = options.contentSize.height or options.height
     local x = options.position.x
     local y = options.position.y
     local ax = options.anchorPoint.x
@@ -277,6 +271,21 @@ local function ListViewCreateFunc(options)
         direction = dir}
     listView:setAnchorPoint(cc.p(ax, ay))
     listView:setContentSize(w,h)
+
+    listView.options = options
+
+    -- we may not be able to know how many items before we actually running the game.
+    -- so either we create a delegate or let the user set the content theirself.
+
+    -- local item_name = "ccb/" .. options.cell .. ".json"
+    -- for i = 1, options.cells_per_page do
+    --     local item = listView:newItem()
+    --     local content = CCBLoader.load(item_name)
+    --     item:addContent(content)
+    --     item:setItemSize(content:getContentSize().width, content:getContentSize().height + 10)
+    --     listView:addItem(item)
+    -- end
+    -- listView:reload()
     return listView
 end
 
@@ -400,7 +409,11 @@ local function BlendFuncParseFunc(data)
 end
 
 local function spriteFrameParseFunc(data)
-    return {plist = data[1], spriteFrameName = data[2]}
+    if data[1] ~= "" then
+        return {plist = data[1], spriteFrameName = "#" .. data[2]}
+    else
+        return {plist = data[1], spriteFrameName = data[2]}
+    end
 end
 
 local function preferredSizeParseFunc(data)
@@ -555,12 +568,24 @@ end
 local function createNodeWithBaseClassName(rootdata, father, childrenList, seq)
     local baseClassName = rootdata["customClass"]
     if not baseClassName or (string.len(baseClassName) == 0) then 
-        baseClassName = rootdata["baseClass"] 
+        baseClassName = rootdata["baseClass"]
+    else
+
     end
 
     local props = rootdata["properties"]
     local sequenses = rootdata["sequences"]
+
     local options = parseProps(props, father)
+
+    -- if we have custom property, load the props to options either.
+    local custom = rootdata["customProperties"] 
+    if custom then
+        for k,v in pairs(custom) do
+            options[v.name] = v.value
+        end
+    end
+
     local createFunc = baseClassCreateFuncs[baseClassName]
     local node
     if createFunc then

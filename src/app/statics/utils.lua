@@ -32,7 +32,6 @@ function utils.delay_call(delay, call, ...)
     return cc.Sequence:create(delayTime, callfunc)
 end
 
-
 function utils.contains(node, x, y)
     local p = node:convertToNodeSpace(cc.p(x, y))
     local size = node:getContentSize()
