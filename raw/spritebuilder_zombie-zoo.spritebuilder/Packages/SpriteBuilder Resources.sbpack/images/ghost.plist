@@ -7,13 +7,26 @@
             <key>ghost_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{122,150}}</string>
+                <string>{{136,0},{122,150}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
                 <string>{{12,0},{122,150}}</string>
+                <key>sourceSize</key>
+                <string>{150,150}</string>
+            </dict>
+            <key>ghost_2p.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,0},{134,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,0},{134,150}}</string>
                 <key>sourceSize</key>
                 <string>{150,150}</string>
             </dict>
@@ -25,9 +38,9 @@
             <key>realTextureFileName</key>
             <string>ghost.png</string>
             <key>size</key>
-            <string>{122,150}</string>
+            <string>{258,150}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:3b1b68918922548bc60e154119fe8776:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:f1501cddd0092f45fc98f7006bacecd2:1/1$</string>
             <key>textureFileName</key>
             <string>ghost.png</string>
         </dict>

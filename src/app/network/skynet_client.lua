@@ -198,6 +198,7 @@ local function dispatch_package(self, package)
         -- 服务端主动发送给客户端的请求
         local name, result = arg1, arg2
         print("[skynet_client] dispatch_package, [server_push_msg], name = ", name)
+        print_r(result)
         if result then
             local cb = self.cb_listeners[name]
             if cb then

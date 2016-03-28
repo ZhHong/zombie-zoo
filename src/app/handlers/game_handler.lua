@@ -8,11 +8,6 @@ function game_handler:ctor()
 end
 
 function game_handler:on_player_room_action(msg)
-	print("game_handler on_player_room_action ")
-	print_r(msg)
-
-	print("##### self.ui = ", self.ui)
-
 	if msg.action_type == consts.player_room_action.player_enter then
 		if self.ui then
 			print("add the actor, new player goes here")
@@ -28,8 +23,6 @@ function game_handler:on_player_room_action(msg)
 end
 
 function game_handler:on_player_state_action(msg)
-	print("game_handler:on_player_state_action")
-	print_r(msg)
 	self.ui:update_actor(msg)
 end
 

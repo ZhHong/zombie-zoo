@@ -12,7 +12,6 @@ local function add_actor_from_player(self, player)
 	local actor = display.newSprite("#ghost_1.png")
 	local x, y = tile_to_screen(player.pos.x, player.pos.y)
 	actor:setPosition(x, y)
-	print("x, y = ", x, y)
 	self:addChild(actor)
 	actor:setCameraMask(ACTOR_CAEMRA_FLAG)
 	self.actors[player.uuid] = actor
@@ -33,7 +32,6 @@ function game_layer:ctor(players, handler)
 		if cur_id == player.uuid then
 			self.player_actor = actor
 		end
-		
 	end
 
 	local camera = cc.Camera:createOrthographic(display.width, display.height, 0, 1)
@@ -58,7 +56,7 @@ function game_layer:ctor(players, handler)
 	    				coord = { x = math.floor(tx), y = math.floor(ty) }
 	    			}
     			}, function() end)
-    		self.player_actor:runAction(cc.MoveTo:create(0.5, cc.p(tx, ty)))
+    		-- self.player_actor:runAction(cc.MoveTo:create(0.5, cc.p(tx, ty)))
     	end
 
     	return true
@@ -79,13 +77,13 @@ function game_layer:remove_actor(player)
 end
 
 function game_layer:update_actor(msg)
-	print('update_actor')
-	print_r(msg)
 	local data = msg.sync_data
 	if data.action_type == consts.player_state_action.move then
 		local actor = self.actors[msg.player_info.uuid]
 		-- TODO: here we should use ccmoveto..
-		actor:setPosition(data.coord.x, data.coord.y)
+
+		actor:runAction(cc.MoveTo:create(0.5, cc.p(data.coord.x, data.coord.y)))
+		-- actor:setPosition(data.coord.x, data.coord.y)
 	elseif data.action_type == consts.player_state_action.cast then
 		
 	elseif data.action_type == consts.player_state_action.die then

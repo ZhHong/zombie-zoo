@@ -63,7 +63,8 @@ local c2s = [[
         }
         response {
             err 0 : integer
-            player_info 1 : *player_info(uuid)
+            seq 1 : integer
+            player_info 2 : *player_info(uuid)
         }
     }
 
