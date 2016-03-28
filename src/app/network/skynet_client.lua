@@ -197,7 +197,7 @@ local function dispatch_package(self, package)
     if t == "REQUEST" then
         -- 服务端主动发送给客户端的请求
         local name, result = arg1, arg2
-        print("[skynet_client] dispatch_package, [server_push_msg], name = ", name)
+        print("[skynet_client] [server_push_msg], name = ", name)
         print_r(result)
         if result then
             local cb = self.cb_listeners[name]
@@ -210,6 +210,9 @@ local function dispatch_package(self, package)
     elseif t == "RESPONSE" then
         -- 客户端发送给服务端接受回应
         local session, result = arg1, arg2
+        print("[skynet_client] [server_response], session = ", session)
+        print_r(result)
+
         if result then
             local cb = self.cb_requests[session]
             if cb then

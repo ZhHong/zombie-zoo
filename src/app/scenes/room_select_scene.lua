@@ -14,23 +14,6 @@ function room_select_scene:ctor(rooms)
 	local node, scene_children, seq = GAME.ccb.load("ccb/room_select_scene.json")
 	self:addChild(node)
 
-	local game_handler = require("app.handlers.game_handler").new()
-
-	local function enter_room(room_id)
-		GAME.client:call_remote("player_enter_room", {room_id = room_id}, function(msg)
-				if msg.err == 0 then
-					print("entered the room.")
-					-- local scene = require("app.scenes.game_scene").new(msg.player_info)
-					-- display.replaceScene(scene)
-
-					GAME:enterScene("game_scene", {msg.player_info, game_handler} )
-				else
-					-- TODO: process the error.
-					assert(false, "not process error yet.")
-				end
-			end)
-	end
-
 	local function set_list()
 		local listView = scene_children.room_list
 		local cell = "ccb/" .. listView.options.cell .. ".json"
@@ -38,9 +21,7 @@ function room_select_scene:ctor(rooms)
 	        local item = listView:newItem()
 	        local content, cell_children = GAME.ccb.load(cell)
 	        utils.set_ctrl_btn(cell_children.cell_btn, function()
-	        		print("click i", i)
-	        		print_r(rooms[i])
-	        		enter_room(rooms[i].id)
+	        		GAME:enterScene("game_scene", {rooms[i].id} )
 	        	end)
 	        item:addContent(content)
 	        item:setItemSize(content:getContentSize().width, content:getContentSize().height + 10)
