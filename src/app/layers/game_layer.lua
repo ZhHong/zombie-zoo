@@ -50,7 +50,6 @@ function game_layer:ctor(room_id)
     self.camera = camera
 
     enter_room(self, room_id)
-   
 
 	self:setNodeEventEnabled(true)
 	self:setTouchEnabled(true)
@@ -66,7 +65,8 @@ function game_layer:ctor(room_id)
     		GAME.client:call_remote("player_upload_state", {
 	    			sync_data = {
 	    				action_type = consts.player_state_action.move,
-	    				coord = { x = math.floor(tx), y = math.floor(ty) }
+	    				coord = { x = math.floor(tx), y = math.floor(ty) },
+	    				uuid = self.player_actor.player.uuid,
 	    			}
     			}, function() end)
     	end
@@ -92,11 +92,10 @@ end
 function game_layer:update_actor(msg)
 	local data = msg.sync_data
 	if data.action_type == consts.player_state_action.move then
-		local actor = self.actors[msg.player_info.uuid]
-		-- TODO: here we should use ccmoveto..
+			
+			local actor = self.actors[data.uuid]
+			actor:runAction(cc.MoveTo:create(0.5, cc.p(data.coord.x, data.coord.y)))
 
-		actor:runAction(cc.MoveTo:create(0.5, cc.p(data.coord.x, data.coord.y)))
-		-- actor:setPosition(data.coord.x, data.coord.y)
 	elseif data.action_type == consts.player_state_action.cast then
 		
 	elseif data.action_type == consts.player_state_action.die then
