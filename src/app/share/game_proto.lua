@@ -64,7 +64,6 @@ local c2s = [[
         }
         response {
             err 0 : integer
-            player_info 1 : *player_info(uuid)
         }
     }
 
@@ -82,7 +81,7 @@ local s2c = [[
         request {
             action_type 0 : integer  #check consts.player_room_action
             room_id     1 : integer
-            player_info 3 : player_info  # TODO:add an actor once, we need more????
+            player_info 2 : player_info  # TODO:add an actor once, we need more????
         }
         response {}
     }

@@ -85,6 +85,10 @@ end
 function game_layer:remove_actor(msg)
 	local player = msg.player_info
 	print('game_layer:remove_actor player_uuid = ', player.uuid)
+	print("remove_actor current actors")
+	for k,v in pairs(self.actors) do
+		print("k = ", k)
+	end
 	self.actors[player.uuid]:removeFromParent()
 	self.actors[player.uuid] = nil
 end
@@ -92,9 +96,12 @@ end
 function game_layer:update_actor(msg)
 	local data = msg.sync_data
 	if data.action_type == consts.player_state_action.move then
-			
-			local actor = self.actors[data.uuid]
-			actor:runAction(cc.MoveTo:create(0.5, cc.p(data.coord.x, data.coord.y)))
+		print("update_actor current actors")
+		for k,v in pairs(self.actors) do
+			print("k = ", k)
+		end
+		local actor = self.actors[data.uuid]
+		actor:runAction(cc.MoveTo:create(0.5, cc.p(data.coord.x, data.coord.y)))
 
 	elseif data.action_type == consts.player_state_action.cast then
 		
