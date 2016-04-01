@@ -1,4 +1,5 @@
 local consts = require "app.share.consts"
+local actor = require "app.actors.actor"
 
 local game_layer = class("game_layer", function(...)
 		return display.newNode(...)
@@ -10,7 +11,9 @@ end
 
 local function add_actor_from_player(self, msg)
 	local player = msg.player_info
-	local actor = display.newSprite(string.format("#ghost_%d.png", msg.player_info.seq))
+
+	-- TODO:create the actor, refactor this someday
+	local actor = actor.new(player)
 	local x, y = tile_to_screen(player.pos.x, player.pos.y)
 	actor:setPosition(x, y)
 	self:addChild(actor)
@@ -56,16 +59,22 @@ function game_layer:ctor(room_id)
     self:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
     	local x, y = event.x, event.y
     	if event.name == "began" then 
-
     		local p = self:convertToWorldSpace(cc.p(x, y))
     		local tx, ty = p.x + self.camera:getPositionX(), p.y + self.camera:getPositionY()
 
-    		print("tx , ty = ", tx, ty)
-    		--TODO: remember to check the coord, the position sync may go wrong.????
     		GAME.client:call_remote("player_upload_state", {
 	    			sync_data = {
 	    				action_type = consts.player_state_action.move,
 	    				coord = { x = math.floor(tx), y = math.floor(ty) },
+	    				uuid = self.player_actor.player.uuid,
+	    			}
+    			}, function() end)
+
+    	elseif event.name == "ended" then
+    		GAME.client:call_remote("player_upload_state", {
+	    			sync_data = {
+	    				action_type = consts.player_state_action.fire,
+	    				coord = { x = math.floor(x), y = math.floor(y) },
 	    				uuid = self.player_actor.player.uuid,
 	    			}
     			}, function() end)
@@ -95,18 +104,15 @@ end
 
 function game_layer:update_actor(msg)
 	local data = msg.sync_data
+	local actor = self.actors[data.uuid]
 	if data.action_type == consts.player_state_action.move then
-		print("update_actor current actors")
-		for k,v in pairs(self.actors) do
-			print("k = ", k)
-		end
-		local actor = self.actors[data.uuid]
+
 		actor:runAction(cc.MoveTo:create(0.5, cc.p(data.coord.x, data.coord.y)))
 
-	elseif data.action_type == consts.player_state_action.cast then
-		
-	elseif data.action_type == consts.player_state_action.die then
-
+	elseif data.action_type == consts.player_state_action.fire then
+		print("update_actor fire pos = ", x, y)
+		local x, y = data.coord.x, data.coord.y
+		actor:fire(x, y)
 	else
 		assert(false, "game_layer:update actor invalid action_type")
 	end

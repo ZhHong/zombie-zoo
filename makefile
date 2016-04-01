@@ -35,6 +35,7 @@ android:clean create_extra_folders
 	mkdir -p res
 	make -C raw android
 
+	#TODO: auto copy someday
 	cd ./tmp/res_android && pwd \
 	&& find ./ -name 'map*.plist' -exec mv {} ./images \; \
 	&& find ./ -name 'map*.png' -exec mv {} ./images \; \

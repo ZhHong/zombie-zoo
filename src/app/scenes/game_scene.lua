@@ -6,6 +6,7 @@ function game_scene:ctor(...)
 	local function preload()
 		cc.SpriteFrameCache:getInstance():addSpriteFrames("images/ui.plist")
 		cc.SpriteFrameCache:getInstance():addSpriteFrames("images/ghost.plist")
+		cc.SpriteFrameCache:getInstance():addSpriteFrames("images/bullets.plist")
 	end
 
 	preload()

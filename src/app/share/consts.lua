@@ -13,8 +13,7 @@ local consts = {
 
 	player_state_action = {
 		move = 1,
-		cast = 2,
-		die = 3,
+		fire = 2,
 	}
 }
 
